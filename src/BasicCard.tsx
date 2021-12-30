@@ -8,16 +8,16 @@ import Typography from '@mui/material/Typography';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useEffect } from 'react';
 
-type Heroes = heroes[];
-
-type heroes = {
+interface hero {
   race: string,
-  heroes: {
-    common: string[],
-    rare: string[],
-    epic: string[]
+  tiers: {
+    common: Array<string>,
+    rare: Array<string>,
+    epic: Array<string>
   }
 }
+
+interface Heroes extends Array<hero> {};
 
 type Rows = Row[]
 
@@ -56,13 +56,13 @@ export default function BasicCard(heroes: heroes) {
   };
   
   useEffect(() => {
-    heroes.heroes?.tiers?.common.map(hero => {
+    heroes.heroes?.tiers?.common.map((hero: string) => {
       fetchPrice(hero, 'Common')
     });
-    heroes.heroes?.tiers?.rare.map(hero => {
+    heroes.heroes?.tiers?.rare.map((hero: string) => {
       fetchPrice(hero, 'Rare')
     });
-    heroes.heroes?.tiers?.epic.map(hero => {
+    heroes.heroes?.tiers?.epic.map((hero: string) => {
       fetchPrice(hero, 'Epic')
     });
 

@@ -8,16 +8,16 @@ import ProTip from '../src/ProTip';
 import Copyright from '../src/Copyright';
 import BasicCard from '../src/BasicCard';
 
-type Heroes = hero[];
-
-type hero = {
+interface hero {
   race: string,
   tiers: {
-    common: string[],
-    rare: string[],
-    epic: string[]
+    common: Array<string>,
+    rare: Array<string>,
+    epic: Array<string>
   }
 }
+
+interface Heroes extends Array<hero> {};
 
 const Heroes: Heroes = [
   {
@@ -154,8 +154,8 @@ const Home: NextPage = () => {
           }}
         >
           {
-            Heroes.map((hero, index) => (
-              <BasicCard heroes={hero} />
+            Heroes.map((item, index) => (
+              <BasicCard heroes={item} />
             ))
           }
         </Box>
