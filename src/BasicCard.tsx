@@ -42,7 +42,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-export default function BasicCard(heroes: heroes) {
+export default function BasicCard(heroes: any) {
   const rows: Rows = [];
 
   const fetchPrice = async (hero: string, tier: string) => {
